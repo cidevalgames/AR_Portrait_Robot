@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="uru02plandetravail1copier" size="1.000000 0.942762" />
+    <ImageTarget name="uru03plandetravail1copier2" size="1.000000 1.250130" />
+    <ImageTarget name="uru01plandetravail1" size="1.000000 0.614061" />
+    <ImageTarget name="uru05plandetravail1copier4" size="1.000000 1.578178" />
+    <ImageTarget name="uru06plandetravail1copier5" size="1.000000 1.290920" />
+    <ImageTarget name="uru04plandetravail1copier3" size="1.000000 1.536699" />
+  </Tracking>
+</QCARConfig>

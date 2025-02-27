@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="marchestp06plandetravail1copier5" size="1.000000 2.355042" />
+    <ImageTarget name="marchestp05plandetravail1copier4" size="1.000000 1.014480" />
+    <ImageTarget name="marchestp04plandetravail1copier3" size="1.000000 1.717557" />
+    <ImageTarget name="marchestp03plandetravail1copier2" size="1.000000 0.537360" />
+    <ImageTarget name="marchestp02plandetravail1copier" size="1.000000 0.946443" />
+    <ImageTarget name="marchestp01plandetravail1" size="1.000000 1.208163" />
+  </Tracking>
+</QCARConfig>
