@@ -47,13 +47,23 @@ public class MyImageTarget : MonoBehaviour
 #endif
     }
 
+    public void ShowImage()
+    {
+        _spriteRenderer.enabled = true;
+    }
+
+    public void DisableImage()
+    {
+        _spriteRenderer.enabled = false;
+    }
+
     private void Event_OnTargetFound()
     {
         _collider.enabled = true;
         _spriteRenderer.enabled = false;
     }
 
-    private void Event_OnTargetLost()
+    public void Event_OnTargetLost()
     {
         _collider.enabled = false; 
         _spriteRenderer.enabled = false;

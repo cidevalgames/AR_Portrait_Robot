@@ -30,7 +30,7 @@ public class PlayerTouch : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(_ray.direction, transform.forward * 50, Color.yellow);
+        Debug.DrawRay(_ray.origin, _ray.direction * 100f, Color.yellow);
     }
 
     private void TouchPressed(InputAction.CallbackContext context)
@@ -45,7 +45,7 @@ public class PlayerTouch : MonoBehaviour
 
             if (hitInfo.collider.GetComponent<ImageTargetBehaviour>())
             {
-                hitInfo.collider.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                MyTargetsManager.Instance.ChangeCurrentTarget(hitInfo.collider.GetComponent<MyImageTarget>());
             }
         }
 
