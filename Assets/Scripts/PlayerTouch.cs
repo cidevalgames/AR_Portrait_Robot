@@ -13,6 +13,8 @@ public class PlayerTouch : MonoBehaviour
 
     private Ray _ray;
 
+    private Collider _lastRaycastedObject;
+
     private void Awake()
     {
         m_playerInput = GetComponent<PlayerInput>();
@@ -30,7 +32,9 @@ public class PlayerTouch : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
         Debug.DrawRay(_ray.origin, _ray.direction * 100f, Color.yellow);
+#endif
     }
 
     private void TouchPressed(InputAction.CallbackContext context)
@@ -50,5 +54,44 @@ public class PlayerTouch : MonoBehaviour
         }
 
         Debug.Log($"Input position: {value}");
+    }
+
+    public void OnTouchPosition(InputValue value)
+    {
+#if UNITY_EDITOR
+        Vector2 position = value.Get<Vector2>();
+        _ray = Camera.main.ScreenPointToRay(position);
+
+        if (_lastRaycastedObject)
+        {
+            SetTrackIndicator(_lastRaycastedObject.transform, true);
+        }
+        
+        _lastRaycastedObject = null;
+
+        if (Physics.Raycast(_ray, out RaycastHit hitInfo, 100f))
+        {
+            Debug.Log($"Touched object: {hitInfo.collider.name}");
+            _lastRaycastedObject = hitInfo.collider;
+
+            if (hitInfo.collider.GetComponent<ImageTargetBehaviour>())
+            {
+                SetTrackIndicator(hitInfo.collider.transform, false);
+            }
+        }
+#endif
+    }
+
+    private void SetTrackIndicator(Transform obj, bool enable)
+    {
+        MeshRenderer[] meshes = obj.GetComponentsInChildren<MeshRenderer>(true);
+
+        foreach (MeshRenderer m in meshes)
+        {
+            if (m.name.Contains("Track_Indicator"))
+            {
+                m.enabled = enable;
+            }
+        }
     }
 }

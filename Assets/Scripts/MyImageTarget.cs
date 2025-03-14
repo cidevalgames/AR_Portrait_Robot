@@ -20,7 +20,7 @@ public class MyImageTarget : MonoBehaviour
         _observer = GetComponent<DefaultObserverEventHandler>();
         _target = GetComponent<ImageTargetBehaviour>();
 
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _spriteRenderer = transform.GetComponentInChildrenOnly<SpriteRenderer>();
         _collider = GetComponent<BoxCollider>();
 
         if (_collider.size == Vector3.one)
@@ -28,6 +28,28 @@ public class MyImageTarget : MonoBehaviour
 
         _observer.OnTargetFound.AddListener(Event_OnTargetFound);
         _observer.OnTargetLost.AddListener(Event_OnTargetLost);
+    }
+
+    private void Start()
+    {
+#if UNITY_EDITOR
+        _collider.enabled = true;
+
+        MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer>(true);
+
+        foreach (MeshRenderer m in meshes)
+        {
+            if (m.name.Contains("Target Representation"))
+            {
+                m.enabled = true;
+            }
+            else if (m.name.Contains("Track_Indicator"))
+            {
+                m.gameObject.SetActive(true);
+                m.enabled = true;
+            }
+        }
+#endif
     }
 
     [ContextMenu("Adapt collider")]
