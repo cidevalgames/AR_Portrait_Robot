@@ -30,8 +30,10 @@ public class MyImageTarget : MonoBehaviour
         _observer.OnTargetLost.AddListener(Event_OnTargetLost);
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForEndOfFrame();
+
 #if UNITY_EDITOR
         _collider.enabled = true;
 
