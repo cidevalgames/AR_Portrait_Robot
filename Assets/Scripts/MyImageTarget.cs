@@ -66,6 +66,16 @@ public class MyImageTarget : MonoBehaviour
 
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+
+        MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer>(true);
+
+        foreach (MeshRenderer m in meshes)
+        {
+            if (m.name.Contains("Track_Indicator"))
+            {
+                m.transform.localScale = new Vector3(imageSize.x, .05f, imageSize.y);
+            }
+        }
 #endif
     }
 
