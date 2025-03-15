@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.PackageManager;
+
+using UnityEngine.Video;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -14,14 +18,16 @@ public class MyImageTarget : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     private BoxCollider _collider;
+    private VideoPlayer _videoPlayer;
 
     private void Awake()
     {
         _observer = GetComponent<DefaultObserverEventHandler>();
         _target = GetComponent<ImageTargetBehaviour>();
 
-        _spriteRenderer = transform.GetComponentInChildrenOnly<SpriteRenderer>();
+        _spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         _collider = GetComponent<BoxCollider>();
+        _videoPlayer = GetComponentInChildren<VideoPlayer>();
 
         if (_collider.size == Vector3.one)
             AdaptColliderSize();
@@ -83,23 +89,46 @@ public class MyImageTarget : MonoBehaviour
 
     public void ShowImage()
     {
-        _spriteRenderer.enabled = true;
+        if (_spriteRenderer)
+            _spriteRenderer.enabled = true;
+
+        if (_videoPlayer)
+        {
+            _videoPlayer.GetComponent<MeshRenderer>().enabled = true;
+            _videoPlayer.enabled = true;
+            _videoPlayer.Play();
+        }
     }
 
     public void DisableImage()
     {
-        _spriteRenderer.enabled = false;
+        if (_spriteRenderer)
+            _spriteRenderer.enabled = false;
+
+        if (_videoPlayer)
+        {
+            _videoPlayer.enabled = false;
+            _videoPlayer.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     private void Event_OnTargetFound()
     {
         _collider.enabled = true;
-        _spriteRenderer.enabled = false;
+
+        if (_spriteRenderer)
+            _spriteRenderer.enabled = false;
+        if (_videoPlayer)
+            _videoPlayer.enabled = false;
     }
 
     public void Event_OnTargetLost()
     {
         _collider.enabled = false; 
-        _spriteRenderer.enabled = false;
+
+        if (_spriteRenderer)
+            _spriteRenderer.enabled = false;
+        if (_videoPlayer)
+            _videoPlayer.enabled = false;
     }
 }
