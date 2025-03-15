@@ -19,6 +19,7 @@ public class MyImageTarget : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private BoxCollider _collider;
     private VideoPlayer _videoPlayer;
+    private Animator _animator;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class MyImageTarget : MonoBehaviour
         _spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         _collider = GetComponent<BoxCollider>();
         _videoPlayer = GetComponentInChildren<VideoPlayer>();
+        _animator = GetComponentInChildren<Animator>();
 
         if (_collider.size == Vector3.one)
             AdaptColliderSize();
@@ -98,6 +100,12 @@ public class MyImageTarget : MonoBehaviour
             _videoPlayer.enabled = true;
             _videoPlayer.Play();
         }
+
+        if (_animator)
+        {
+            _animator.GetComponent<SpriteRenderer>().enabled = true;
+            _animator.enabled = true;
+        }
     }
 
     public void DisableImage()
@@ -109,6 +117,12 @@ public class MyImageTarget : MonoBehaviour
         {
             _videoPlayer.enabled = false;
             _videoPlayer.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+        if (_animator)
+        {
+            _animator.GetComponent<SpriteRenderer>().enabled = false;
+            _animator.enabled = false;
         }
     }
 
