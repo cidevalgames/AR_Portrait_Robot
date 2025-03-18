@@ -19,6 +19,7 @@ public class MyImageTarget : MonoBehaviour
     private BoxCollider _collider;
     private VideoPlayer _videoPlayer;
     private Animator _animator;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -29,6 +30,13 @@ public class MyImageTarget : MonoBehaviour
         _collider = GetComponent<BoxCollider>();
         _videoPlayer = GetComponentInChildren<VideoPlayer>();
         _animator = GetComponentInChildren<Animator>();
+        _audioSource = GetComponentInChildren<AudioSource>();
+
+        if (_audioSource)
+        {
+            _audioSource.playOnAwake = false;
+            _audioSource.enabled = false;
+        }
 
         if (_collider.size == Vector3.one)
             AdaptColliderSize();
@@ -105,6 +113,12 @@ public class MyImageTarget : MonoBehaviour
             _animator.GetComponent<SpriteRenderer>().enabled = true;
             _animator.enabled = true;
         }
+
+        if (_audioSource)
+        {
+            _audioSource.enabled = true;
+            _audioSource.Play();
+        }
     }
 
     public void DisableImage()
@@ -122,6 +136,11 @@ public class MyImageTarget : MonoBehaviour
         {
             _animator.GetComponent<SpriteRenderer>().enabled = false;
             _animator.enabled = false;
+        }
+
+        if (_audioSource)
+        {
+            _audioSource.enabled = false;
         }
     }
 
