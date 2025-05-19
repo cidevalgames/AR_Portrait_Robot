@@ -338,6 +338,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17ced0868c1660d499558aeb5f304ac2,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground
@@ -467,6 +473,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b078eb6927f6814dbf5932ab43265f8,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground
@@ -596,6 +608,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3256be8c619360042ae145252ae96b75,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground
@@ -1086,6 +1104,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 38cccb68e5215e34eb32d0eccd26b89b,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground
@@ -1327,6 +1351,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ba13c9f9a59ac6c4d9b595fa13918124,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground
@@ -1755,6 +1785,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617584214816922998, guid: 1f5c7870424acac4e894f1e8f755d44f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f3e2fcb25281044da3bdde198b62327,
+        type: 3}
     - target: {fileID: 5611789815059997565, guid: 1f5c7870424acac4e894f1e8f755d44f,
         type: 3}
       propertyPath: fadedBackground

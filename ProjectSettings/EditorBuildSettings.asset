@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI_Gallery.unity
     guid: 41f242dcb9f6eb2488c6dfa1b50aa328
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Portrait_Robot.unity
     guid: d6b342e7ea43e2242a58fba15b477aa9
+  - enabled: 1
+    path: Assets/Scenes/Portrait_Robot_Terence.unity
+    guid: d2b9bfd6a3b579143b2ff91a84df82e5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 831d1e9d43bb600448f99eb34b8712b6,
       type: 3}
