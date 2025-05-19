@@ -15,28 +15,18 @@ public class MyImageTarget : MonoBehaviour
     private DefaultObserverEventHandler _observer;
     private ImageTargetBehaviour _target;
 
-    private SpriteRenderer _spriteRenderer;
+    private MyImageOverlay[] _imageOverlays = new MyImageOverlay[0];
+
     private BoxCollider _collider;
-    private VideoPlayer _videoPlayer;
-    private Animator _animator;
-    private AudioSource _audioSource;
 
     private void Awake()
     {
         _observer = GetComponent<DefaultObserverEventHandler>();
         _target = GetComponent<ImageTargetBehaviour>();
 
-        _spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
         _collider = GetComponent<BoxCollider>();
-        _videoPlayer = GetComponentInChildren<VideoPlayer>();
-        _animator = GetComponentInChildren<Animator>();
-        _audioSource = GetComponentInChildren<AudioSource>();
 
-        if (_audioSource)
-        {
-            _audioSource.playOnAwake = false;
-            _audioSource.enabled = false;
-        }
+        _imageOverlays = GetComponentsInChildren<MyImageOverlay>(true);
 
         if (_collider.size == Vector3.one)
             AdaptColliderSize();
@@ -98,69 +88,29 @@ public class MyImageTarget : MonoBehaviour
 
     public void ShowImage()
     {
-        if (_spriteRenderer)
-            _spriteRenderer.enabled = true;
-
-        if (_videoPlayer)
-        {
-            _videoPlayer.GetComponent<MeshRenderer>().enabled = true;
-            _videoPlayer.enabled = true;
-            _videoPlayer.Play();
-        }
-
-        if (_animator)
-        {
-            _animator.GetComponent<SpriteRenderer>().enabled = true;
-            _animator.enabled = true;
-        }
-
-        if (_audioSource)
-        {
-            _audioSource.enabled = true;
-            _audioSource.Play();
-        }
+        foreach (var overlay in _imageOverlays)
+            overlay.SetOverlay(true);
     }
 
     public void DisableImage()
     {
-        if (_spriteRenderer)
-            _spriteRenderer.enabled = false;
+        //Debug.Log($"Image overlays: {_imageOverlays.Length}");
 
-        if (_videoPlayer)
-        {
-            _videoPlayer.enabled = false;
-            _videoPlayer.GetComponent<MeshRenderer>().enabled = false;
-        }
-
-        if (_animator)
-        {
-            _animator.GetComponent<SpriteRenderer>().enabled = false;
-            _animator.enabled = false;
-        }
-
-        if (_audioSource)
-        {
-            _audioSource.enabled = false;
-        }
+        foreach (var overlay in _imageOverlays)
+            overlay.SetOverlay(false);
     }
 
     private void Event_OnTargetFound()
     {
         _collider.enabled = true;
 
-        if (_spriteRenderer)
-            _spriteRenderer.enabled = false;
-        if (_videoPlayer)
-            _videoPlayer.enabled = false;
+        DisableImage();
     }
 
     public void Event_OnTargetLost()
     {
         _collider.enabled = false; 
 
-        if (_spriteRenderer)
-            _spriteRenderer.enabled = false;
-        if (_videoPlayer)
-            _videoPlayer.enabled = false;
+        DisableImage();
     }
 }

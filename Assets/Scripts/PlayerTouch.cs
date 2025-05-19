@@ -47,7 +47,7 @@ public class PlayerTouch : MonoBehaviour
 
         if (Physics.Raycast(_ray, out RaycastHit hitInfo, 100f))
         {
-            Debug.Log($"Touched object: {hitInfo.collider.name}");
+            //Debug.Log($"Touched object: {hitInfo.collider.name}");
 
             if (hitInfo.collider.GetComponent<ImageTargetBehaviour>())
             {
@@ -55,7 +55,7 @@ public class PlayerTouch : MonoBehaviour
             }
         }
 
-        Debug.Log($"Input position: {value}");
+        //Debug.Log($"Input position: {value}");
     }
 
     public void OnTouchPosition(InputValue value)
@@ -73,7 +73,7 @@ public class PlayerTouch : MonoBehaviour
 
         if (Physics.Raycast(_ray, out RaycastHit hitInfo, 100f))
         {
-            Debug.Log($"Touched object: {hitInfo.collider.name}");
+            //Debug.Log($"Touched object: {hitInfo.collider.name}");
             _lastRaycastedObject = hitInfo.collider;
 
             if (hitInfo.collider.GetComponent<ImageTargetBehaviour>())
