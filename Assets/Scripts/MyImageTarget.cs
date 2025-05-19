@@ -15,9 +15,11 @@ public class MyImageTarget : MonoBehaviour
     private DefaultObserverEventHandler _observer;
     private ImageTargetBehaviour _target;
 
-    private MyImageOverlay[] _imageOverlays = new MyImageOverlay[0];
+    public MyImageOverlay[] imageOverlays { get; private set; } = new MyImageOverlay[0];
 
     private BoxCollider _collider;
+
+    private int _currentOverlayIndex = 0;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class MyImageTarget : MonoBehaviour
 
         _collider = GetComponent<BoxCollider>();
 
-        _imageOverlays = GetComponentsInChildren<MyImageOverlay>(true);
+        imageOverlays = GetComponentsInChildren<MyImageOverlay>(true);
 
         if (_collider.size == Vector3.one)
             AdaptColliderSize();
@@ -88,16 +90,25 @@ public class MyImageTarget : MonoBehaviour
 
     public void ShowImage()
     {
-        foreach (var overlay in _imageOverlays)
-            overlay.SetOverlay(true);
+        if (imageOverlays.Length == 0)
+            return;
+
+        foreach (var overlay in imageOverlays)
+            overlay.SetOverlay(false);
+
+        imageOverlays[_currentOverlayIndex % imageOverlays.Length].SetOverlay(true);
+
+        _currentOverlayIndex++;
     }
 
     public void DisableImage()
     {
         //Debug.Log($"Image overlays: {_imageOverlays.Length}");
 
-        foreach (var overlay in _imageOverlays)
+        foreach (var overlay in imageOverlays)
             overlay.SetOverlay(false);
+
+        _currentOverlayIndex = 0;
     }
 
     private void Event_OnTargetFound()

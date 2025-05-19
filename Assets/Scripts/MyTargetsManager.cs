@@ -13,10 +13,10 @@ public class MyTargetsManager : MonoBehaviour
         get { return currentActiveTarget; } 
         private set 
         { 
-            DisableEveryTarget();
-
             if (value != currentActiveTarget)
             {
+                DisableEveryTarget();
+
                 currentActiveTarget = value;
 
                 if (value != null)
@@ -26,7 +26,15 @@ public class MyTargetsManager : MonoBehaviour
             }
             else
             {
-                currentActiveTarget = null;
+                if (currentActiveTarget.imageOverlays.Length > 1)
+                {
+                    CurrentActiveTarget.ShowImage();
+                }
+                else
+                {
+                    DisableEveryTarget();
+                    currentActiveTarget = null;
+                }
             }
         } 
     }
