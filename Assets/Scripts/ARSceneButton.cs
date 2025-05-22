@@ -68,7 +68,7 @@ public class ARSceneButton : MonoBehaviour
 
         m_rectTransform.DOSizeDelta(zoomedSize, zoomDuration).SetEase(Ease.OutExpo).OnComplete(() =>
         {
-            SceneManager.LoadScene("Portrait_Robot");
+            SceneManager.LoadScene("Portrait_Robot_Terence");
         });
     }
 
